@@ -1,0 +1,34 @@
+- odometria: medidas do proprio robo sobre ele mesmo e o ambiente
+- modelos cinematicos:
+  - direta: dado os movimentos do meu robo, qual a posicao e orientação final do robo?
+  - inversa: dada a posição e a orientação que quero chegar no espaço, quais movimentos o robo deve fazer?
+
+- expressar a locomoção do robo na referencia global:
+- nao leva em conta fricção, derrapagem etc
+
+- transformação 2d de um ponto
+x, y * [[a,b],[c,d]] = x1,y1 = xa + cy, xb + dy
+- matrix de rotação de A graus
+x, y * [[cos A, -sen A],[senA, cosA]] = x1, y1 -> [[0, -1],[1, 0]] = 90 graus -> -y, x
+- translacao de um ponto
+x, y, 1 * [[1, 0, deltax],[0, 1, deltay],[0, 0, 1]] = x1, y1, 0
+---> da para aplicar rotacao e depois translacao, MAS A ORDEM IMPORTA
+
+trans & rot = [[cos A, -senA, deltax],[senA, cosA, deltay],[0, 0, 1]]
+
+- Transformação entre sistemas: local para global
+  - valores do sonar: frame de referencia do robo
+  - a posição do robo é a origem do sistema do robo
+  - descer pro lado contrario o ponto lido (-A)
+  - leitura P(1, 1) no frame do robo
+  - robo esta transladado Rx, Ry, e rotacionado A
+  - aplicar rotação no ponto P de A & transladar Rx, Ry no ponto
+    - aplicando a matriz trans & rotação
+    - se quiser fazer separado, fazer rot pelo ponto e depois trans pelo ponto
+    -
+
+- Transformar global para local
+  - criar origem imaginaria paralela na origem local
+  - transladar P para esse sistema (-Lx, -Ly)
+  - rotacionar P de -A
+    - aplicar matriz rot & trans
