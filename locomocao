@@ -25,7 +25,8 @@ trans & rot = [[cos A, -senA, deltax],[senA, cosA, deltay],[0, 0, 1]]
   - aplicar rotação no ponto P de A & transladar Rx, Ry no ponto
     - aplicando a matriz trans & rotação
     - se quiser fazer separado, fazer rot pelo ponto e depois trans pelo ponto
-    -
+    - somar angulo do sonar no angulo do robo!
+    - somar raio do robo na leitura do sonar! (x+R, y+R)
 
 - Transformar global para local
   - criar origem imaginaria paralela na origem local
